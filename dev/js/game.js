@@ -1,5 +1,6 @@
 var snakecanvas = document.getElementById( "the-game" );
 var snakecontext = snakecanvas.getContext( "2d" );
+
 snakegame = {
   score: 0,
   fps: 8,
@@ -25,17 +26,13 @@ snakegame = {
     snakefood.set();
     snakegame.distance = 1;
     snakegame.timer = 0;
-    $( '.entername .leaderboard-score' ).show();
-    $( '.entername .leaderboard-distance' ).show();
-    $( '.entername .text-info' ).show();
-    jQuery( '.entername .btn-success' ).prop( 'disabled', true );
-    $( '.alerts' ).html( '' );
+    onStart();
   },
   stop: function() {
     snakegame.over = true;
     snakegame.message = 'START';
-    jQuery( '.soumettre' ).show();
-    jQuery( '.entername .btn-success' ).prop( 'disabled', false );
+    $( '.soumettre' ).show();
+    $( '.entername .btn-success' ).prop( 'disabled', false );
     var globalRef = new Firebase( 'https://snakeleader.firebaseio.com/snakeGlobal/distanceTotale' );
     globalRef.transaction( function( current ) {
       // If /users/fred/rank has never been set, currentRank will be null.
@@ -58,10 +55,10 @@ snakegame = {
     //snakecontext.font = ( snakecanvas.height / 10 ) + 'px Arial';
     //snakecontext.textAlign = 'left';
     //snakecontext.fillText( snakegame.score, snakecanvas.width / 2, snakecanvas.height * 0.9 );
-    jQuery( '.leaderboard-score' ).val( snakegame.score * 100 );
-    jQuery( '.timer' ).val( Math.round( snakegame.timer / 10 ) );
-    jQuery( '.vitesse' ).val( Math.round( snakegame.fps ) );
-    jQuery( '.leaderboard-distance' ).val( Math.round( snakegame.distance * 0.02 * snakegame.fps ) );
+    $( '.leaderboard-score' ).val( snakegame.score * 100 );
+    $( '.timer' ).val( Math.round( snakegame.timer / 10 ) );
+    $( '.vitesse' ).val( Math.round( snakegame.fps ) );
+    $( '.leaderboard-distance' ).val( Math.round( snakegame.distance * 0.02 * snakegame.fps ) );
   },
   drawMessage: function() {
     if ( snakegame.message !== null ) {
@@ -227,103 +224,34 @@ snakeserpent = {
         }, 1000 );
       }
       requestAnimationFrame( snakeloop );
-      jQuery( "canvas#the-game" ).click( function() {
+      $( "canvas#the-game" ).click( function() {
         snakegame.start();
       } );
-      /*
-      ##         ## ##      ##       ########    ###    ########  ######## ########  ########   #######     ###    ########  ########
-      ##         ## ##      ##       ##         ## ##   ##     ## ##       ##     ## ##     ## ##     ##   ## ##   ##     ## ##     ##
-      ##       #########    ##       ##        ##   ##  ##     ## ##       ##     ## ##     ## ##     ##  ##   ##  ##     ## ##     ##
-      ##         ## ##      ##       ######   ##     ## ##     ## ######   ########  ########  ##     ## ##     ## ########  ##     ##
-      ##       #########    ##       ##       ######### ##     ## ##       ##   ##   ##     ## ##     ## ######### ##   ##   ##     ##
-      ##         ## ##      ##       ##       ##     ## ##     ## ##       ##    ##  ##     ## ##     ## ##     ## ##    ##  ##     ##
-      ########   ## ##      ######## ######## ##     ## ########  ######## ##     ## ########   #######  ##     ## ##     ## ########
-      */
-      var LEADERBOARD_SIZE = 20;
-      // Create our Firebase reference
-      var scoreListRef = new Firebase( 'https://snakeleader.firebaseio.com//scoreList' );
-      /*
-      var onComplete = function(error) {
-        if (error) {
-          console.log('Synchronization failed',error);
-        } else {
-          console.log('Synchronization succeeded');
-        }
-      };
-      var userScoreRef = scoreListRef.push();
-      userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
-      */
-      // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
-      var htmlForPath = {};
-      // Create a view to only receive callbacks for the last LEADERBOARD_SIZE scores
-      var scoreListView = scoreListRef.limit( LEADERBOARD_SIZE );
-      // Add a callback to handle when a new score is added.
-      scoreListView.on( 'child_added', function( newScoreSnapshot, prevScoreName ) {
-        handleScoreAdded( newScoreSnapshot, prevScoreName );
-      } );
-      // Add a callback to handle when a score is removed
-      scoreListView.on( 'child_removed', function( oldScoreSnapshot ) {
-        handleScoreRemoved( oldScoreSnapshot );
-      } );
-      // Add a callback to handle when a score changes or moves positions.
-      var changedCallback = function( scoreSnapshot, prevScoreName ) {
-        handleScoreRemoved( scoreSnapshot );
-        handleScoreAdded( scoreSnapshot, prevScoreName );
-      };
-      scoreListView.on( 'child_moved', changedCallback );
-      scoreListView.on( 'child_changed', changedCallback );
-      $( ".entername .btn-success" ).on( 'click', function() {
-        updatetheScore();
-      } );
-      // Helper function that takes a new score snapshot and adds an appropriate row to our leaderboard table.
-      function handleScoreAdded( scoreSnapshot, prevScoreName ) {
-        var newScoreRow = $( "<tr/>" );
-        newScoreRow.append( $( "<td/>" ).append( $( "<em/>" ).html( '<h4>' + scoreSnapshot.val().name + '</h4>' ) ) );
-        newScoreRow.append( $( "<td/>" ).text( scoreSnapshot.val().distance + " m" ) );
-        var vitesseMoyenne = scoreSnapshot.val().distance / scoreSnapshot.val().timer;
-        vitesseMoyenne = Math.round( vitesseMoyenne * 100 ) / 10;
-        newScoreRow.append( $( "<td/>" ).text( vitesseMoyenne + " px/s" ) );
-        newScoreRow.append( $( "<td/>" ).html( '<h4>' + scoreSnapshot.val().score + '</h4>' ) );
-        // Store a reference to the table row so we can get it again later.
-        htmlForPath[ scoreSnapshot.name() ] = newScoreRow;
-        // Insert the new score in the appropriate place in the table.
-        if ( prevScoreName === null ) {
-          $( "#leaderboardTable" ).append( newScoreRow );
-        } else {
-          var lowerScoreRow = htmlForPath[ prevScoreName ];
-          lowerScoreRow.before( newScoreRow );
-        }
-      }
-      // Helper function to handle a score object being removed; just removes the corresponding table row.
-      function handleScoreRemoved( scoreSnapshot ) {
-        var removedScoreRow = htmlForPath[ scoreSnapshot.name() ];
-        removedScoreRow.remove();
-        delete htmlForPath[ scoreSnapshot.name() ];
-      }
+    
 
-      function updatetheScore() {
-        var newScore = Number( $( "#scoreInput" ).val() );
-        var newDistance = Number( $( "#distanceInput" ).val() );
-        var newTimer = Number( $( "#timerInput" ).val() );
-        var name = $( "#nameInput" ).val();
-        if ( name.length === 0 ) return;
-        if ( newScore === 0 ) return;
-        $( "#scoreInput" ).val( 0 );
-        $( "#distanceInput" ).val( 0 );
-        $( "#timerInput" ).val( 0 );
-        $( "#vitesseInput" ).val( 0 );
-        $( ".entername .btn-success" ).prop( 'disabled', true );
-        $( '.entername .leaderboard-score' ).hide();
-        $( '.entername .leaderboard-distance' ).hide();
-        $( '.entername .text-info' ).hide();
-        //if(newScore>snapshot.val().score) {
-        var userScoreRef = scoreListRef.push();
-        // Use setWithPriority to put the name / score in Firebase, and set the priority to be the score.
-        userScoreRef.setWithPriority( {
-          name: name,
-          score: newScore,
-          distance: newDistance,
-          timer: newTimer,
-          timestamp: Firebase.ServerValue.TIMESTAMP
-        }, newScore );
-      }
+function updatetheScore() {
+  var newScore = Number( $( "#scoreInput" ).val() );
+  var newDistance = Number( $( "#distanceInput" ).val() );
+  var newTimer = Number( $( "#timerInput" ).val() );
+  var name = $( "#nameInput" ).val();
+  if ( name.length === 0 ) return;
+  if ( newScore === 0 ) return;
+  $( "#scoreInput" ).val( 0 );
+  $( "#distanceInput" ).val( 0 );
+  $( "#timerInput" ).val( 0 );
+  $( "#vitesseInput" ).val( 0 );
+  $( ".entername .btn-success" ).prop( 'disabled', true );
+  $( '.entername .leaderboard-score' ).hide();
+  $( '.entername .leaderboard-distance' ).hide();
+  $( '.entername .text-info' ).hide();
+  //if(newScore>snapshot.val().score) {
+  var userScoreRef = scoreListRef.push();
+  // Use setWithPriority to put the name / score in Firebase, and set the priority to be the score.
+  userScoreRef.setWithPriority( {
+    name: name,
+    score: newScore,
+    distance: newDistance,
+    timer: newTimer,
+    timestamp: Firebase.ServerValue.TIMESTAMP
+  }, newScore );
+}
