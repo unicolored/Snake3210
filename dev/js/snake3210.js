@@ -7,15 +7,15 @@ Snake3210
   $routeProvider
   .when('/', {
     //template: 'yo',
-    templateUrl: 'js/views/play.html',
+    templateUrl: 'views/play.html',
     controller: 'PlayCtrl'
   })
   .when('/classement', {
-    templateUrl: 'js/views/classement.html',
+    templateUrl: 'views/classement.html',
     controller: 'ClassementCtrl'
   })
   .when('/aide', {
-    templateUrl: 'js/views/aide.html',
+    templateUrl: 'views/aide.html',
     controller: 'AideCtrl'
   })
   .otherwise({
