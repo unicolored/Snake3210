@@ -1,29 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Snake3210">
+
 <head>
-<meta charset="utf-8" />
-<title>HTML5 snake - Canvas Snake Game</title>
-<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link rel="stylesheet" href="page.css" type="text/css">
+  <meta charset="utf-8" />
+  <title>Snake3210</title>
+  <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/page.css" />
 </head>
+
 <body>
 
-<h1>html5-snake</h1>
-<p><a href="http://en.wikipedia.org/wiki/HTML5">HTML5</a> variation of the classic <a href="http://en.wikipedia.org/wiki/Snake_(video_game)">snake game</a>.</p>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Jouer</a>
+        </li>
+        <li><a ng-href="#/classement">Classement</a>
+        </li>
+        <li><a ng-href="#/aide">Aide</a>
+        </li>
+      </ul>
+      <h3 class="text-muted">Snake3210</h3>
+    </div>
 
-<div>
-  <canvas id="the-game" width="320" height="240">
-</div>
+    <div ng-view="">
+      <canvas id="the-game" width="320" height="240"></canvas>
+      <div class="entername">
+        <input class="leaderboard-score" type="text" id="scoreInput" placeholder="0" value="0" readonly="readonly" disabled="disabled">
+        <em class="text-info distancelabel">Distance (m)</em>
+        <input class="leaderboard-distance" type="text" id="distanceInput" placeholder="0" value="0" readonly="readonly" disabled="disabled">
+        <input class="timer" type="hidden" id="timerInput" placeholder="0" value="0" readonly="readonly" disabled="disabled">
+        <input class="vitesse" type="hidden" id="vitesseInput" placeholder="0" value="0" readonly="readonly" disabled="disabled">
+        <br>
+        <div class="alerts">
+        </div>
+        <div class="soumettre" style="display:none">
+          <input class="leaderboard-name" type="text" id="nameInput" placeholder="Enter votre nom">
+          <button class="btn btn-success submitScore" disabled="disabled">Soumettre le score</button>
+        </div>
+      </div>
+    </div>
 
-<p>Control snake with arrow keys, WASD, or HJKL (vim keys).</p>
+  </div>
 
-<p>New food may appear under snake, uncoil to reveal.</p>
+  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+  <script type="text/javascript" src="js/snake3210.js"></script>
+  <script type="text/javascript" src="js/controllers/classement.js"></script>
+  <script type="text/javascript" src="js/controllers/aide.js"></script>
+  <script type="text/javascript" src="js/game.js"></script>
 
-<p>Collect the food to grow and increase speed.</p>
-
-<p>&copy; 2013 - <a href="http://JDStraughan.com">JDStraughan.com</a> - <a href="https://github.com/JDStraughan/html5-snake">Source on GitHub</a></p>  
-<script type="text/javascript" src="game.js"></script>
 </body>
+
 </html>
