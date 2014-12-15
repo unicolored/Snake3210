@@ -365,6 +365,10 @@ body {
   /* STYLES PERSOS / Intérieur du <body> *********************************************************/
   /*************************************************************************/
 }
+body ::-moz-selection {
+  background: #e23134;
+  color: #eeeeee;
+}
 body ::selection {
   background: #e23134;
   color: #eeeeee;

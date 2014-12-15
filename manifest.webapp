@@ -1,0 +1,21 @@
+{
+  "version": "0.0.0",
+  "name": "Snake3210",
+  "description": "Let's eat apples and lead the board !",
+  "launch_path": "/webapp/webapp.0.0.0.html",
+  "appcache_path": "/offline.appcache",
+  "icons": {
+    "16": "/img/ico/16.0.0.0.png",
+    "48": "/img/ico/48.0.0.0.png",
+    "128": "/img/ico/128.0.0.0.png"
+  },
+  "developer": {
+    "name": "Gilles Hoarau",
+    "url": "https://www.gilleshoarau.com/directeur-artistique/"
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "fr",
+  "permissions": {
+    "systemXHR": {"description": "."}
+  }
+}

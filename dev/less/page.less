@@ -1,0 +1,33 @@
+/*!
+ */
+/*! Styles*/
+// CHARGEMENT DES ICONES
+/*****************************************************/
+/*****************************************************/
+
+/*!Bootstrap*/
+/* VARIABLES GLOBALES */
+/* Les variables du skin - Contient les variables de couleurs, de path, de fonts, de composants
+/* Il faut permettre le choix de ce skin via les options du thème Bodyrock (assets/inc/themeoptions.php themeoptionsGet_default()), */
+/* et ensuite passer la variable dans .less au moment de la compilation : */
+/* http://leafo.net/lessphp/docs/#setting_variables_from_php */
+//@import "page/variables_mediaqueries.less";
+@import "page/variables_default.less";
+@import "page/variables_couleurs.less";
+/*****************************************************/
+/*****************************************************/
+@import "material.less";
+
+html {
+  height:100%;
+}
+
+body {
+	/* TYPOGRAPHIE, la base */
+	@import "page/_typography.less";
+
+	///////////////////////////////////////////////////////////////////////
+	// STYLES D'ELEMENTS RECCURENTS DANS LES SECTIONS ET LES PAGES
+  @import "page/__body.less";
+
+} // end - body

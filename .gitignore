@@ -9,6 +9,7 @@ node_modules
 
 # Ignore config
 tmp/
+ssl/
 dist/dev/
 
 # Operating system files
