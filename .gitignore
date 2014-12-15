@@ -9,6 +9,7 @@ node_modules
 
 # Ignore config
 tmp/
+dist/dev/
 
 # Operating system files
 .Spotlight-V100
