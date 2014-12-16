@@ -1,56 +1,49 @@
 <!DOCTYPE html>
 <html ng-app="Snake3210">
-
-<head>
-  <meta charset="utf-8" />
-  <title>HTML5 snake - Canvas Snake Game</title>
-  <!--[if IE]>
+    <head>
+        <meta charset="utf-8" />
+        <title>HTML5 snake - Canvas Snake Game</title>
+        <!--[if IE]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.6/angular-material.css">
-  <link rel="stylesheet" type="text/css" href="/dev/css/themes/my-custom-theme.css" />
-
-</head>
-
-<body>
-
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span class="md-flex">Snake<sup>3210</sup></span>
-      <a ng-href="#"><md-button class="md-raised">Jouer</md-button></a>
-
-      <a ng-href="#/classement"><md-button class="md-raised">Classement</md-button></a>
-
-      <a ng-href="#/aide"><md-button class="md-raised">Aide</md-button></a>
-    </div>
-  </md-toolbar>
-
-  <div ng-view="" flex>
-
-  </div>
-
-
-  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-  <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.1.3/hammer.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-animate.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-aria.js"></script>
-
-  <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
-  <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.6/angular-material.min.js"></script>
-
-  <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
-  <script type="text/javascript" src="../bower_components/angular-touch/angular-touch.min.js"></script>
-
-  <script type="text/javascript" src="dev/js/snake3210.js"></script>
-  <script type="text/javascript" src="dev/js/controllers/play.js"></script>
-  <script type="text/javascript" src="dev/js/controllers/classement.js"></script>
-  <script type="text/javascript" src="dev/js/controllers/aide.js"></script>
-  <!--<script type="text/javascript" src="js/game.js"></script>-->
-
-</body>
-
+        <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.6/angular-material.css">
+        <link rel="stylesheet" type="text/css" href="/dev/css/themes/my-custom-theme.css"
+        />
+    </head>
+    <body>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span class="md-flex">Snake
+                    <sup>3210</sup>
+                </span>
+                <a ng-href="#">
+                    <md-button class="md-raised">Jouer</md-button>
+                </a>
+                <a ng-href="#/classement">
+                    <md-button class="md-raised">Classement</md-button>
+                </a>
+                <a ng-href="#/aide">
+                    <md-button class="md-raised">Aide</md-button>
+                </a>
+            </div>
+        </md-toolbar>
+        <div ng-view="" flex>
+        </div>
+        <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.1.3/hammer.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-animate.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-aria.js"></script>
+        <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
+        <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.6/angular-material.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-touch/angular-touch.min.js"></script>
+        <script type="text/javascript" src="dev/js/snake3210.js"></script>
+        <script type="text/javascript" src="dev/js/controllers/play.js"></script>
+        <script type="text/javascript" src="dev/js/controllers/classement.js"></script>
+        <script type="text/javascript" src="dev/js/controllers/aide.js"></script>
+        <!--<script type="text/javascript" src="js/game.js"></script>-->
+    </body>
 </html>
