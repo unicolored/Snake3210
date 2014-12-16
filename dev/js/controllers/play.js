@@ -1,4 +1,3 @@
-'use strict';
 /**
  * @ngdoc function
  * @name yoangularApp.controller:MainCtrl
@@ -7,7 +6,7 @@
  * Controller of the yoangularApp
  */
 Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
-    console.log( 'oh' );
+    'use strict';
     var snakecanvas = document.getElementById( "the-game" );
     var snakecontext = snakecanvas.getContext( "2d" );
     $( '.entername .submitScore' ).prop( 'disabled', true );

@@ -4,13 +4,13 @@ console.log( 'Module OK' );
 Snake3210.config( function( $routeProvider ) {
     $routeProvider.when( '/', {
         //template: 'yo',
-        templateUrl: 'views/play.html',
+        templateUrl: './views/play.html',
         controller: 'PlayCtrl'
     } ).when( '/classement', {
-        templateUrl: 'views/classement.html',
+        templateUrl: './views/classement.html',
         controller: 'ClassementCtrl'
     } ).when( '/aide', {
-        templateUrl: 'views/aide.html',
+        templateUrl: './views/aide.html',
         controller: 'AideCtrl'
     } ).otherwise( {
         redirectTo: '/'

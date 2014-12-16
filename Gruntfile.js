@@ -198,15 +198,11 @@ module.exports = function( grunt ) {
         // Concaténation devant être appellée par sécurité avant un build
         bower_concat: {
             all: {
-                dest: '<%= gh.devJspath %>bower_concat.js',
+                dest: '<%= gh.devJspath %>tmp/bower_concat.js',
                 // je ne charge pas les css de bower actuellement
                 cssDest: '<%= gh.devCsspath %>bower_concat.css',
-                exclude: [ 'json3', 'es5-shim' ],
-                dependencies: {
-                    'jquery': 'angular',
-                    'jquery.easing': 'jquery',
-                    'bootstrap': 'jquery',
-                },
+                exclude: [ 'json3', 'es5-shim', 'angular-mocks', 'angularytics', 'angular' ],
+                //dependencies: {            },
                 bowerOptions: {
                     relative: false
                 },
@@ -239,7 +235,7 @@ module.exports = function( grunt ) {
             },
             my_target: {
                 files: {
-                    '<%= gh.distPath %>game.min.js': [ '<%= gh.devJspath %>tmp/game.js' ],
+                    '<%= gh.distPath %>game.min.js': [ '<%= gh.distPath %>game.js' ],
                 }
             }
         },
@@ -255,56 +251,56 @@ module.exports = function( grunt ) {
         /*************************************************************************************************************************************************/
         // OPTIMISATION D'IMAGES
         imagemin: { // Task
-          dynamic: { // Another target
-            options: {
-              optimizationLevel: 3,
-              svgoPlugins: [ {
-                removeViewBox: false
+            dynamic: { // Another target
+                options: {
+                    optimizationLevel: 3,
+                    svgoPlugins: [ {
+                        removeViewBox: false
               } ],
-              use: [ mozjpeg() ]
-            },
-            files: [ {
-              expand: true, // Enable dynamic expansion
-              cwd: '<%= gh.devImgpath %>', // Src matches are relative to this path
-              src: [ '**/*.{png,jpg,gif,ico,svg}' ], // Actual patterns to match
-              dest: '<%= gh.distImgpath %>' // Destination path prefix
+                    use: [ mozjpeg() ]
+                },
+                files: [ {
+                    expand: true, // Enable dynamic expansion
+                    cwd: '<%= gh.devImgpath %>', // Src matches are relative to this path
+                    src: [ '**/*.{png,jpg,gif,ico,svg}' ], // Actual patterns to match
+                    dest: '<%= gh.distImgpath %>' // Destination path prefix
             } ]
-          },
+            },
         },
         webp: {
-          images: {
-            options: {
-              //binpath: 'C:/Users/Administrator/AppData/Roaming/npm/node_modules/webp-bin/bin',
-              binpath: 'C:/Program Files (x86)/Webp/bin/cwebp',
-              preset: 'default',
-              verbose: true,
-              quality: 80,
-              alphaQuality: 70,
-              compressionMethod: 3,
-              segments: 4,
-              psnr: 42,
-              sns: 50,
-              filterStrength: 0,
-              filterSharpness: 3,
-              //simpleFilter: true,
-              partitionLimit: 50,
-              analysisPass: 6,
-              multiThreading: true,
-              lowMemory: false,
-              alphaMethod: 0,
-              alphaFilter: 'best',
-              alphaCleanup: true,
-              noAlpha: false,
-              lossless: true,
-              force: true
-            },
-            files: [ {
-              expand: true,
-              cwd: '<%= gh.distImgpath %>',
-              src: [ '**/*.{jpg,png,gif,ico}' ],
-              dest: '<%= gh.distImgpath %>'
+            images: {
+                options: {
+                    //binpath: 'C:/Users/Administrator/AppData/Roaming/npm/node_modules/webp-bin/bin',
+                    binpath: 'C:/Program Files (x86)/Webp/bin/cwebp',
+                    preset: 'default',
+                    verbose: true,
+                    quality: 80,
+                    alphaQuality: 70,
+                    compressionMethod: 3,
+                    segments: 4,
+                    psnr: 42,
+                    sns: 50,
+                    filterStrength: 0,
+                    filterSharpness: 3,
+                    //simpleFilter: true,
+                    partitionLimit: 50,
+                    analysisPass: 6,
+                    multiThreading: true,
+                    lowMemory: false,
+                    alphaMethod: 0,
+                    alphaFilter: 'best',
+                    alphaCleanup: true,
+                    noAlpha: false,
+                    lossless: true,
+                    force: true
+                },
+                files: [ {
+                    expand: true,
+                    cwd: '<%= gh.distImgpath %>',
+                    src: [ '**/*.{jpg,png,gif,ico}' ],
+                    dest: '<%= gh.distImgpath %>'
             } ],
-          }
+            }
         },
         /*
         ########   ## ##      ##     ## ######## ##     ## ##
@@ -419,7 +415,7 @@ module.exports = function( grunt ) {
                 src: [ "./dist/manifest.webapp", "./dist/offline.appcache" ]
             },
             images: {
-              src: [ "<%= gh.distImgpath %>**/*.jpg", "<%= gh.distImgpath %>**/*.png", "<%= gh.distImgpath %>**/*.gif", "<%= gh.distImgpath %>**/*.ico", "<%= gh.distImgpath %>**/*.webp" ]
+                src: [ "<%= gh.distImgpath %>**/*.jpg", "<%= gh.distImgpath %>**/*.png", "<%= gh.distImgpath %>**/*.gif", "<%= gh.distImgpath %>**/*.ico", "<%= gh.distImgpath %>**/*.webp" ]
             },
         },
         /*
@@ -610,40 +606,39 @@ module.exports = function( grunt ) {
       ],
             },
             versioningImg: {
-              files: [
+                files: [
               // makes all src relative to cwd
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/logo.svg',
-                dest: '0.0.0<%= gh.devImgpath %>ico/logo.<%= pkg.version %>.svg',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/logo.svg',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/logo.<%= pkg.version %>.svg',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/gravatar.jpg',
-                dest: '0.0.0<%= gh.devImgpath %>ico/gravatar.<%= pkg.version %>.jpg',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/gravatar.jpg',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/gravatar.<%= pkg.version %>.jpg',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/favicon.ico',
-                dest: '0.0.0<%= gh.devImgpath %>ico/favicon.<%= pkg.version %>.ico',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/favicon.ico',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/favicon.<%= pkg.version %>.ico',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/144.png',
-                dest: '0.0.0<%= gh.devImgpath %>ico/144.<%= pkg.version %>.png',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/144.png',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/144.<%= pkg.version %>.png',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/16.png',
-                dest: '0.0.0<%= gh.devImgpath %>ico/16.<%= pkg.version %>.png',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/16.png',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/16.<%= pkg.version %>.png',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/48.png',
-                dest: '0.0.0<%= gh.devImgpath %>ico/48.<%= pkg.version %>.png',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/48.png',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/48.<%= pkg.version %>.png',
               },
-              {
-                src: '0.0.0<%= gh.devImgpath %>ico/128.png',
-                dest: '0.0.0<%= gh.devImgpath %>ico/128.<%= pkg.version %>.png',
+                    {
+                        src: '0.0.0<%= gh.devImgpath %>ico/128.png',
+                        dest: '0.0.0<%= gh.devImgpath %>ico/128.<%= pkg.version %>.png',
               }
               ],
             },
         },
-
     } );
     /*************************************************************************************************************************************************/
     /*************************************************************************************************************************************************/
@@ -686,7 +681,7 @@ module.exports = function( grunt ) {
     } );
     // MES TACHES
     grunt.registerTask( 'reloadImg', function( target ) {
-      grunt.task.run( [ 'clean:images', 'copy:versioningImg', 'imagemin:dynamic', 'webp:images' ] );
+        grunt.task.run( [ 'clean:images', 'copy:versioningImg', 'imagemin:dynamic', 'webp:images' ] );
     } );
     grunt.registerTask( 'reloadFonts', function( target ) {
         grunt.task.run( [ 'curl:fonts1' ] );
