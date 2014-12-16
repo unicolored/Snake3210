@@ -1,15 +1,15 @@
 /**
  * @ngdoc function
- * @name yoangularApp.controller:MainCtrl
+ * @name Snake3210.controller:PlayCtrl
  * @description
- * # MainCtrl
- * Controller of the yoangularApp
+ * # PlayCtrl
+ * Controller of the Snake3210
  */
 Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
     'use strict';
     var snakecanvas = document.getElementById( "the-game" );
     var snakecontext = snakecanvas.getContext( "2d" );
-    $( '.entername .submitScore' ).prop( 'disabled', true );
+    angular.element( '.submitScore' ).prop( 'disabled', true );
     var snakegame = {
         score: 0,
         fps: 8,
@@ -35,16 +35,16 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
             snakefood.set();
             snakegame.distance = 1;
             snakegame.timer = 0;
-            $( '.entername .leaderboard-score' ).show();
-            $( '.entername .leaderboard-distance' ).show();
-            $( '.entername .distancelabel' ).show();
-            $( '.entername .submitScore' ).prop( 'disabled', true );
-            $( '.alerts' ).html( '' );
+            $( '.leaderboard-score' ).show();
+            $( '.leaderboard-distance' ).show();
+            $( '.distancelabel' ).show();
+            angular.element( '.submitScore' ).prop( 'disabled', true );
+            angular.element( '.alerts' ).html( '' );
         },
         stop: function() {
             snakegame.over = true;
             snakegame.message = 'START';
-            $( '.entername .submitScore' ).prop( 'disabled', false );
+            angular.element( '.submitScore' ).prop( 'disabled', false );
             $( '.soumettre' ).show();
             var globalRef = new Firebase( 'https://snakeleader.firebaseio.com/snakeGlobal/distanceTotale' );
             globalRef.transaction( function( current ) {
@@ -68,10 +68,10 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
             //snakecontext.font = ( snakecanvas.height / 10 ) + 'px Arial';
             //snakecontext.textAlign = 'left';
             //snakecontext.fillText( snakegame.score, snakecanvas.width / 2, snakecanvas.height * 0.9 );
-            $( '.leaderboard-score' ).val( snakegame.score * 100 );
-            $( '.timer' ).val( Math.round( snakegame.timer / 10 ) );
-            $( '.vitesse' ).val( Math.round( snakegame.fps ) );
-            $( '.leaderboard-distance' ).val( Math.round( snakegame.distance * 0.02 * snakegame.fps ) );
+            angular.element( '.leaderboard-score' ).val( snakegame.score * 100 );
+            angular.element( '.timer' ).val( Math.round( snakegame.timer / 10 ) );
+            angular.element( '.vitesse' ).val( Math.round( snakegame.fps ) );
+            angular.element( '.leaderboard-distance' ).val( Math.round( snakegame.distance * 0.02 * snakegame.fps ) );
         },
         drawMessage: function() {
             if ( snakegame.message !== null ) {
@@ -237,7 +237,7 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
         }, 1000 );
     }
     requestAnimationFrame( snakeloop );
-    $( "canvas#the-game" ).click( function() {
+    snakecanvas.click( function() {
         snakegame.start();
     } );
     /*
@@ -282,23 +282,23 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
     };
     scoreListView.on( 'child_moved', changedCallback );
     scoreListView.on( 'child_changed', changedCallback );
-    $( ".entername .submitScore" ).on( 'click', function() {
+    angular.element( ".submitScore" ).on( 'click', function() {
         updatetheScore();
     } );
     // Helper function that takes a new score snapshot and adds an appropriate row to our leaderboard table.
     function handleScoreAdded( scoreSnapshot, prevScoreName ) {
-            var newScoreRow = $( "<tr/>" );
-            newScoreRow.append( $( "<td/>" ).append( $( "<em/>" ).html( '<h4>' + scoreSnapshot.val().name + '</h4>' ) ) );
-            newScoreRow.append( $( "<td/>" ).text( scoreSnapshot.val().distance + " m" ) );
+            var newScoreRow = angular.element( "<tr/>" );
+            newScoreRow.append( angular.element( "<td/>" ).append( angular.element( "<em/>" ).html( '<h4>' + scoreSnapshot.val().name + '</h4>' ) ) );
+            newScoreRow.append( angular.element( "<td/>" ).text( scoreSnapshot.val().distance + " m" ) );
             var vitesseMoyenne = scoreSnapshot.val().distance / scoreSnapshot.val().timer;
             vitesseMoyenne = Math.round( vitesseMoyenne * 100 ) / 10;
-            newScoreRow.append( $( "<td/>" ).text( vitesseMoyenne + " px/s" ) );
-            newScoreRow.append( $( "<td/>" ).html( '<h4>' + scoreSnapshot.val().score + '</h4>' ) );
+            newScoreRow.append( angular.element( "<td/>" ).text( vitesseMoyenne + " px/s" ) );
+            newScoreRow.append( angular.element( "<td/>" ).html( '<h4>' + scoreSnapshot.val().score + '</h4>' ) );
             // Store a reference to the table row so we can get it again later.
             htmlForPath[ scoreSnapshot.name() ] = newScoreRow;
             // Insert the new score in the appropriate place in the table.
             if ( prevScoreName === null ) {
-                $( "#leaderboardTable" ).append( newScoreRow );
+                angular.element( "#leaderboardTable" ).append( newScoreRow );
             } else {
                 var lowerScoreRow = htmlForPath[ prevScoreName ];
                 lowerScoreRow.before( newScoreRow );
@@ -312,20 +312,20 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
     }
 
     function updatetheScore() {
-        var newScore = Number( $( "#scoreInput" ).val() );
-        var newDistance = Number( $( "#distanceInput" ).val() );
-        var newTimer = Number( $( "#timerInput" ).val() );
-        var name = $( "#nameInput" ).val();
+        var newScore = Number( angular.element( "#scoreInput" ).val() );
+        var newDistance = Number( angular.element( "#distanceInput" ).val() );
+        var newTimer = Number( angular.element( "#timerInput" ).val() );
+        var name = angular.element( "#nameInput" ).val();
         if ( name.length === 0 ) return;
         if ( newScore === 0 ) return;
-        $( "#scoreInput" ).val( 0 );
-        $( "#distanceInput" ).val( 0 );
-        $( "#timerInput" ).val( 0 );
-        $( "#vitesseInput" ).val( 0 );
-        $( ".entername .submitScore" ).prop( 'disabled', true );
-        $( '.entername .leaderboard-score' ).hide();
-        $( '.entername .leaderboard-distance' ).hide();
-        $( '.entername .text-info' ).hide();
+        angular.element( "#scoreInput" ).val( 0 );
+        angular.element( "#distanceInput" ).val( 0 );
+        angular.element( "#timerInput" ).val( 0 );
+        angular.element( "#vitesseInput" ).val( 0 );
+        angular.element( ".submitScore" ).prop( 'disabled', true );
+        $( '.leaderboard-score' ).hide();
+        $( '.leaderboard-distance' ).hide();
+        $( '.text-info' ).hide();
         //if(newScore>snapshot.val().score) {
         var userScoreRef = scoreListRef.push();
         // Use setWithPriority to put the name / score in Firebase, and set the priority to be the score.

@@ -1,12 +1,12 @@
-'use strict';
 /**
  * @ngdoc function
- * @name yoangularApp.controller:AboutCtrl
+ * @name Snake3210.controller:ClassementCtrl
  * @description
- * # AboutCtrl
- * Controller of the yoangularApp
+ * # ClassementCtrl
+ * Controller of the Snake3210
  */
 Snake3210.controller( 'ClassementCtrl', [ '$scope', function( $scope ) {
+    'use strict';
     /*
     ##         ## ##      ##       ########    ###    ########  ######## ########  ########   #######     ###    ########  ########
     ##         ## ##      ##       ##         ## ##   ##     ## ##       ##     ## ##     ## ##     ##   ## ##   ##     ## ##     ##
@@ -49,15 +49,15 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
     };
     scoreListView.on( 'child_moved', changedCallback );
     scoreListView.on( 'child_changed', changedCallback );
-    $( ".entername .btn-success" ).on( 'click', function() {
+    angular.element( ".btn-success" ).on( 'click', function() {
         updatetheScore();
     } );
     // Helper function that takes a new score snapshot and adds an appropriate row to our leaderboard table.
     function handleScoreAdded( scoreSnapshot, prevScoreName ) {
             var vitesseMoyenne = scoreSnapshot.val().distance / scoreSnapshot.val().timer;
             vitesseMoyenne = Math.round( vitesseMoyenne * 100 ) / 10;
-            var newScoreRow = $( "<md-item-content/>" );
-            //newScoreRow.append( $( '<div class="md-tile-left"/>' ).append( $( "<em/>" ).html( '<h5>' + scoreSnapshot.val().score + '</h5>' ) ) );
+            var newScoreRow = angular.element( "<md-item-content/>" );
+            //newScoreRow.append( angular.element( '<div class="md-tile-left"/>' ).append( angular.element( "<em/>" ).html( '<h5>' + scoreSnapshot.val().score + '</h5>' ) ) );
             newScoreRow.append( $( '<div class="md-tile-right"/>' ).append( $( "<em/>" ).html( '<h1>' + scoreSnapshot.val().score + '</h1>' ) ).append( $( '<h3/>' ).text( scoreSnapshot.val().name ) ).append( scoreSnapshot.val().distance + " m | Vitesse moy. : " + vitesseMoyenne + " px/s" ) );
             newScoreRow.append( '<md-divider></md-divider>' );
             $( "<md-item/>" ).append( newScoreRow );
@@ -65,7 +65,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
             htmlForPath[ scoreSnapshot.name() ] = newScoreRow;
             // Insert the new score in the appropriate place in the table.
             if ( prevScoreName === null ) {
-                $( "#leaderboardTable" ).append( newScoreRow );
+                angular.element( "#leaderboardTable" ).append( newScoreRow );
             } else {
                 var lowerScoreRow = htmlForPath[ prevScoreName ];
                 lowerScoreRow.before( newScoreRow );

@@ -127,7 +127,7 @@ module.exports = function( grunt ) {
                     banner: '/*\nTheme Name: <%= gh.themename %>\nTheme URI: <%= gh.themeuri %>\nDescription: <%= pkg.description %>\nAuthor: <%= gh.themeauthor %>\nAuthorURI: <%= gh.themeauthoruri %>\nTemplate: <%= gh.themetemplate %>\nVersion: <%= pkg.version %>\nText Domain: <%= gh.themetextdomain %>\n*/'
                 },
                 files: {
-                    "<%= gh.distPath %>page.css": [ "<%= gh.devCsspath %>font1.css", "<%= gh.devCsspath %>page.ap.css" ]
+                    "<%= gh.distPath %>page.css": [ "<%= gh.devCsspath %>font1.css", "<%= gh.devCsspath %>bower_concat.css", "<%= gh.devCsspath %>page.ap.css" ]
                 }
             }
         },

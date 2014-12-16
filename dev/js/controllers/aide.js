@@ -1,16 +1,10 @@
-'use strict';
 /**
  * @ngdoc function
- * @name yoangularApp.controller:AboutCtrl
+ * @name Snake3210.controller:AideCtrl
  * @description
- * # AboutCtrl
- * Controller of the yoangularApp
+ * # AideCtrl
+ * Controller of the Snake3210
  */
 Snake3210.controller( 'AideCtrl', [ '$scope', function( $scope ) {
-    console.log( 'Aide' );
-    $scope.awesomeThings = [
-  'HTML5 Boilerplate',
-  'AngularJS',
-  'Karma'
-  ];
+    'use strict';
 } ] );

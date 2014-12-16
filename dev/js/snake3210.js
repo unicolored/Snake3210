@@ -1,9 +1,7 @@
-'use strict';
-var Snake3210 = angular.module( 'Snake3210', [ 'ngRoute', 'ngTouch', 'ngMaterial' ] );
-console.log( 'Module OK' );
+var Snake3210 = angular.module( 'Snake3210', [ 'ngMaterial', 'ngRoute', 'ngSanitize', 'ngAria' ] );
 Snake3210.config( function( $routeProvider ) {
+    'use strict';
     $routeProvider.when( '/', {
-        //template: 'yo',
         templateUrl: './views/play.html',
         controller: 'PlayCtrl'
     } ).when( '/classement', {
@@ -15,5 +13,4 @@ Snake3210.config( function( $routeProvider ) {
     } ).otherwise( {
         redirectTo: '/'
     } );
-    //$( '.submitScore' ).hide().prop( 'disabled', true );
 } );
