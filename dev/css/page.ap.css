@@ -368,6 +368,10 @@ body {
   /* Presence */
   /* Tetris */
 }
+body ::-moz-selection {
+  background: #e23134;
+  color: #eeeeee;
+}
 body ::selection {
   background: #e23134;
   color: #eeeeee;
@@ -438,7 +442,6 @@ body .entername input.leaderboard-distance {
   width: 100%;
 }
 body .example-leaderboard {
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   padding: 20px;
   border-radius: 5px;
@@ -474,10 +477,7 @@ body .example-leaderboard table tr:first-child td {
   background: green;
 }
 body .example-leaderboard input {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   padding: 0 10px;

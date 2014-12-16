@@ -1,28 +1,23 @@
-
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <span class="md-flex">Classement</span>
-  </div>
-</md-toolbar>
 <div layout="row">
+
   <div flex>
-<md-content class="md-padding">
-  <md-subheader>Top 15</md-subheader>
-    <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center">
-
-    <md-list id="leaderboardTable">
-      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-    </md-list>
-  </md-whiteframe>
-
-  </md-content>
-</div>
-<div flex>
     <md-content class="md-padding">
-      <md-subheader>Statistiques <small>Tous joueurs confondus</small></md-subheader>
-    <p>Nombre de pommes avalées : {{pommesTotale}}</p>
-    <p>Nombre de kilomètres parcourus : {{distanceTotale}}</p>
 
-</md-content>
-</div>
+      <md-whiteframe class="md-whiteframe-z1">
+        <md-list id="leaderboardTable" layout="column">
+
+        </md-list>
+      </md-whiteframe>
+
+    </md-content>
+  </div>
+  <div flex>
+    <md-content class="md-padding">
+      <md-subheader>Statistiques <small>Tous joueurs confondus</small>
+      </md-subheader>
+      <p>Nombre de pommes avalées : {{pommesTotale}}</p>
+      <p>Nombre de kilomètres parcourus : {{distanceTotale}}</p>
+
+    </md-content>
+  </div>
 </div>

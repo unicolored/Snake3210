@@ -1,18 +1,10 @@
-'use strict';
-
 /**
-* @ngdoc function
-* @name yoangularApp.controller:AboutCtrl
-* @description
-* # AboutCtrl
-* Controller of the yoangularApp
-*/
-Snake3210
-.controller('AideCtrl', ['$scope', function ($scope) {
-  console.log('Aide');
-  $scope.awesomeThings = [
-  'HTML5 Boilerplate',
-  'AngularJS',
-  'Karma'
-  ];
-}]);
+ * @ngdoc function
+ * @name Snake3210.controller:AideCtrl
+ * @description
+ * # AideCtrl
+ * Controller of the Snake3210
+ */
+Snake3210.controller( 'AideCtrl', [ '$scope', function( $scope ) {
+    'use strict';
+} ] );
