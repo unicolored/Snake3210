@@ -1,18 +1,14 @@
-# html5-snake
+# Snake 3210
 
-Okay, so I'm up to 2 games in my repertoire. 
-
-The last game, [lightcycles](https://github.com/JDStraughan/html5-lightcycles), was a great learning experience, and I tried to apply some of the lessons learned there to this game.
+Let's play the old Snake. Collect apples, make the distance, increase speed and lead the board !
 
 ## Installation
 
-It's just HTML, CSS, and javascript.  Open it in a modern browser and have fun.
-
-Too lazy to download?  [Play it on jsfiddle (may be older version of game)](http://jsfiddle.net/zT7V4/1/).
+It's just HTML, CSS, Javascript and Firebase. Open it in a modern browser and join the board.
 
 ## Inspiration
 
-[lightcycles](https://github.com/JDStraughan/html5-lightcycles) was a blast to write, and it really made me think about how to make my snake move (hehe).  I decided on making and array, and just shift()ing and push()ing segments.  This is what I ended up with.
+[JDStraughan](https://github.com/JDStraughan/html5-snake) made the initial version of this oldschool game. Thanks to him.
 
 ## Contributing
 
@@ -26,7 +22,7 @@ If you issue a pull request, add your name here!
 
 MIT License - http://opensource.org/licenses/MIT
 
-Copyright (c) 2013 Jason D. Straughan
+Copyright (c) 2014 Gilles Hoarau
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

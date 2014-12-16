@@ -1,0 +1,15 @@
+# Bonjour, ça va ?
+# humanstxt.org
+
+# TEAM
+	Web Developer: Gilles Hoarau
+	Site: http://gilleshoarau.com/apps/Snake3210/
+	Twitter: @gilleshoarau
+	Location: Paris, France FR
+
+# SITE
+	Version: 0.1.0
+	Site Url: https://github.com/unicolored/Snake3210
+	Keywords: 
+	Language: French
+	Last Update: 2014-12-16

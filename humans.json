@@ -1,0 +1,18 @@
+{
+  "team": [ {
+    "Web developer": "Gilles Hoarau",
+    "Site": "http://gilleshoarau.com/apps/Snake3210/",
+    "Twitter": "@gilleshoarau",
+    "Location": "Paris, France FR"
+
+  }
+],
+"site": [ {
+  "Version": "<%= pkg.version %>",
+  "Site Url": "<%= pkg.homepage %>",
+  "Keywords": "<%= pkg.keywords %>",
+  "Language": "French",
+  "Last update": "<%= grunt.template.today('yyyy-mm-dd') %>"
+}
+]
+}

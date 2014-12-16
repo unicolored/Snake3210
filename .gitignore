@@ -1,0 +1,26 @@
+# As Yeoman assumes the usage of Bower and Grunt, ignore the below:
+bower_components
+node_modules
+
+# Ignore automatically generated cruft
+*.log
+.sass-cache
+.*/
+
+# Ignore config
+doc/
+tmp/
+ssl/
+dist/dev/
+dist/img/material-design-icons/
+
+# Operating system files
+.Spotlight-V100
+.Trashes
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# Vagrant
+.vagrant

@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<title>HTML5 snake - Canvas Snake Game</title>
-<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link rel="stylesheet" href="page.css" type="text/css">
-</head>
-<body>
+    <head manifest="offline.appcache">
+        <base href="/apps/Snake3210/">
+        <meta charset="utf-8" />
+        <title>Snake3210 - Let's eat apples !</title>
+        <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+        <style>
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+              display: none !important;
+            }
 
-<h1>html5-snake</h1>
-<p><a href="http://en.wikipedia.org/wiki/HTML5">HTML5</a> variation of the classic <a href="http://en.wikipedia.org/wiki/Snake_(video_game)">snake game</a>.</p>
+            .splash {
+              display: none;
+            }
 
-<div>
-  <canvas id="the-game" width="320" height="240">
-</div>
+            [ng-cloak].splash {
+              display: block !important;
+            }
+            .splash {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height:100%;
+              width:100%;
+              filter: alpha(opacity=60);
+              opacity: 0.6;
+              background: #000;
+            }
 
-<p>Control snake with arrow keys, WASD, or HJKL (vim keys).</p>
+            .splash h2 {
+              text-align: center;
+              font-size: 4em;
+              color:white;
+            }
+        </style>
+    </head>
+    <body ng-app="Snake3210">
+        <!-- The splash screen must be first -->
+        <div class="splash ng-cloak" ng-cloak>
+            <h2>Loading</h2>
+        </div>
+        <link rel="stylesheet" type="text/css" href="page.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.min.js"></script>
+        <script type="text/javascript" src="game.min.js"></script>
 
-<p>New food may appear under snake, uncoil to reveal.</p>
+        <div>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <a href="/apps/Snake3210/#/">
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/navigation/svg/production/ic_menu_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+                    </a>
+                    <span flex>Snake
+                      <sup>3210</sup>
+                    </span>
+                    <a ng-href="/apps/Snake3210/#/aide">
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/action/svg/production/ic_info_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+                    </a>
+                </div>
+                <md-progress-linear class="loadingspinner" md-mode="indeterminate" value="" ng-show="loading"></md-progress-linear>
+            </md-toolbar>
 
-<p>Collect the food to grow and increase speed.</p>
-
-<p>&copy; 2013 - <a href="http://JDStraughan.com">JDStraughan.com</a> - <a href="https://github.com/JDStraughan/html5-snake">Source on GitHub</a></p>  
-<script type="text/javascript" src="game.js"></script>
-</body>
+            <div ng-view="">
+            </div>
+        </div>
+    </body>
 </html>
