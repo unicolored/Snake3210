@@ -30,6 +30,10 @@ body {
   // STYLES D'ELEMENTS RECCURENTS DANS LES SECTIONS ET LES PAGES
   @import "page/__body.less";
 
+  .loadingspinner {
+    display: none;
+  }
+
   canvas {
     font-family: 'VT323';
     display: block;
@@ -38,43 +42,26 @@ body {
     background-color: #081217;
     margin-top: 5px;
   }
-  body {
-    padding-top: 30px;
-  }
-  body hr {
-    border: 1px solid #0c161b;
-    clear: both;
-  }
-  body .tab-content {
-    padding-bottom: 30px;
-    padding-top: 30px;
-  }
-  body .tab-content .tab-pane {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  body #home {
-    background-color: #0c161b;
-  }
-  body .soumettre {
+
+  .soumettre {
     display: none;
   }
-  body table#leaderboardTable tr:nth-child(2) h4 {
+  table#leaderboardTable tr:nth-child(2) h4 {
     font-size: 6em;
   }
-  body table#leaderboardTable tr:nth-child(3) h4 {
+  table#leaderboardTable tr:nth-child(3) h4 {
     font-size: 4em;
   }
-  body table#leaderboardTable tr:nth-child(4) h4 {
+  table#leaderboardTable tr:nth-child(4) h4 {
     font-size: 4em;
   }
-  body table#leaderboardTable tr:nth-child(5) h4 {
+  table#leaderboardTable tr:nth-child(5) h4 {
     font-size: 2em;
   }
-  body table#leaderboardTable tr:nth-child(6) h4 {
+  table#leaderboardTable tr:nth-child(6) h4 {
     font-size: 2em;
+  }
 
-  }
   /*LEADERBOARD*/
   .entername {
     width: 100%;

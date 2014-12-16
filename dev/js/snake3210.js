@@ -1,4 +1,4 @@
-var Snake3210 = angular.module( 'Snake3210', [ 'ngMaterial', 'ngRoute', 'ngSanitize', 'ngAria' ] );
+var Snake3210 = angular.module( 'Snake3210', [ 'ngAnimate', 'ngMaterial', 'ngRoute', 'ngSanitize', 'ngAria' ] );
 Snake3210.config( function( $routeProvider ) {
     'use strict';
     $routeProvider.when( '/', {

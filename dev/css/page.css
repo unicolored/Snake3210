@@ -384,40 +384,22 @@ body canvas {
   background-color: #081217;
   margin-top: 5px;
 }
-body body {
-  padding-top: 30px;
-}
-body body hr {
-  border: 1px solid #0c161b;
-  clear: both;
-}
-body body .tab-content {
-  padding-bottom: 30px;
-  padding-top: 30px;
-}
-body body .tab-content .tab-pane {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-body body #home {
-  background-color: #0c161b;
-}
-body body .soumettre {
+body .soumettre {
   display: none;
 }
-body body table#leaderboardTable tr:nth-child(2) h4 {
+body table#leaderboardTable tr:nth-child(2) h4 {
   font-size: 6em;
 }
-body body table#leaderboardTable tr:nth-child(3) h4 {
+body table#leaderboardTable tr:nth-child(3) h4 {
   font-size: 4em;
 }
-body body table#leaderboardTable tr:nth-child(4) h4 {
+body table#leaderboardTable tr:nth-child(4) h4 {
   font-size: 4em;
 }
-body body table#leaderboardTable tr:nth-child(5) h4 {
+body table#leaderboardTable tr:nth-child(5) h4 {
   font-size: 2em;
 }
-body body table#leaderboardTable tr:nth-child(6) h4 {
+body table#leaderboardTable tr:nth-child(6) h4 {
   font-size: 2em;
 }
 body .entername {

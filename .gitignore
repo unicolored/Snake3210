@@ -12,6 +12,7 @@ doc/
 tmp/
 ssl/
 dist/dev/
+dist/img/material-design-icons/
 
 # Operating system files
 .Spotlight-V100

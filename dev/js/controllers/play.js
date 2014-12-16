@@ -5,7 +5,7 @@
  * # PlayCtrl
  * Controller of the Snake3210
  */
-Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
+Snake3210.controller( 'PlayCtrl', [ '$rootScope', '$scope', function( $rootScope, $scope ) {
     'use strict';
     var snakecanvas = document.getElementById( "the-game" );
     var snakecontext = snakecanvas.getContext( "2d" );

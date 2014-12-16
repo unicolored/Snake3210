@@ -27421,7 +27421,7 @@ angular.module( 'ngMaterial', [ "ng", "ngAnimate", "ngAria", "material.core", "m
 }.call( this ) );
  
 //####dev/js/tmp/snake3210.js
-var Snake3210 = angular.module( 'Snake3210', [ 'ngMaterial', 'ngRoute', 'ngSanitize', 'ngAria' ] );
+var Snake3210 = angular.module( 'Snake3210', [ 'ngAnimate', 'ngMaterial', 'ngRoute', 'ngSanitize', 'ngAria' ] );
 Snake3210.config( ['$routeProvider', function( $routeProvider ) {
     'use strict';
     $routeProvider.when( '/', {
@@ -27458,7 +27458,7 @@ Snake3210.controller( 'AideCtrl', [ '$scope', function( $scope ) {
  * # ClassementCtrl
  * Controller of the Snake3210
  */
-Snake3210.controller( 'ClassementCtrl', [ '$scope', function( $scope ) {
+Snake3210.controller( 'ClassementCtrl', [ '$rootScope', '$scope', function( $rootScope, $scope ) {
     'use strict';
     /*
     ##         ## ##      ##       ########    ###    ########  ######## ########  ########   #######     ###    ########  ########
@@ -27507,6 +27507,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
     } );
     // Helper function that takes a new score snapshot and adds an appropriate row to our leaderboard table.
     function handleScoreAdded( scoreSnapshot, prevScoreName ) {
+            $rootScope.loading = true;
             var vitesseMoyenne = scoreSnapshot.val().distance / scoreSnapshot.val().timer;
             vitesseMoyenne = Math.round( vitesseMoyenne * 100 ) / 10;
             var newScoreRow = angular.element( "<md-item-content/>" );
@@ -27523,6 +27524,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
                 var lowerScoreRow = htmlForPath[ prevScoreName ];
                 lowerScoreRow.before( newScoreRow );
             }
+            $rootScope.loading = false;
         }
         // Helper function to handle a score object being removed; just removes the corresponding table row.
     function handleScoreRemoved( scoreSnapshot ) {
@@ -27540,7 +27542,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
  * # PlayCtrl
  * Controller of the Snake3210
  */
-Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
+Snake3210.controller( 'PlayCtrl', [ '$rootScope', '$scope', function( $rootScope, $scope ) {
     'use strict';
     var snakecanvas = document.getElementById( "the-game" );
     var snakecontext = snakecanvas.getContext( "2d" );
