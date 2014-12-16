@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v1.7.3
+
+CACHE:
+/webapp/webapp.1.7.3.html
+/wp-content/themes/rock-gilleshoarau/style.1.7.3.css
+/wp-content/themes/rock-gilleshoarau/js/scripts.1.7.3.min.js
+/wp-content/themes/rock-gilleshoarau/img/ico/16.1.7.3.png
+/wp-content/themes/rock-gilleshoarau/img/ico/48.1.7.3.png
+/wp-content/themes/rock-gilleshoarau/img/ico/128.1.7.3.png
+/wp-content/themes/rock-gilleshoarau/img/ico/144.1.7.3.png
+/wp-content/themes/rock-gilleshoarau/img/ico/favicon.1.7.3.ico
+/wp-content/themes/rock-gilleshoarau/img/ico/gravatar.1.7.3.jpg
+/wp-content/themes/rock-gilleshoarau/img/ico/logo.1.7.3.svg
+
+NETWORK:
+*

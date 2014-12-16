@@ -365,8 +365,6 @@ body {
   /* STYLES PERSOS / Intérieur du <body> *********************************************************/
   /*************************************************************************/
   /*LEADERBOARD*/
-  /* Presence */
-  /* Tetris */
 }
 body ::selection {
   background: #e23134;
@@ -375,6 +373,9 @@ body ::selection {
 body ::-moz-selection {
   background: #e23134;
   color: #eeeeee;
+}
+body .loadingspinner {
+  display: none;
 }
 body canvas {
   font-family: 'VT323';
@@ -496,22 +497,5 @@ body .example-leaderboard input.example-leaderboard-score {
 }
 body #highestscore {
   margin-top: 20px;
-  font-size: 14px;
-}
-body #presenceDiv {
-  text-align: center;
-}
-body .tetris-body {
-  width: 600px;
-}
-body #canvas0,
-body #canvas1 {
-  display: inline-block;
-  border: 4px solid #424547;
-}
-body #restartButton {
-  margin-top: 5px;
-}
-body #gameInProgress {
   font-size: 14px;
 }

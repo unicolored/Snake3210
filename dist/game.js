@@ -1,4 +1,4 @@
-/*! Snake3210 - v0.0.0 - 16-12-2014 [FR] */
+/*! Snake3210 - v0.1.0 - 16-12-2014 [FR] */
 //####dev/js/tmp/bower_concat.js
 /**
  * @license AngularJS v1.3.7

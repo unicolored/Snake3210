@@ -1,6 +1,6 @@
 {
   "name": "Snake3210",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Let's play the old Snake. Collect apples, make the distance, increase speed and lead the board !",
   "main": "Gruntfile.js",
   "directories": {
