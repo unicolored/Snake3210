@@ -7,6 +7,10 @@
  */
 Snake3210.controller( 'PlayCtrl', [ '$rootScope', '$scope', function( $rootScope, $scope ) {
     'use strict';
+    this.isHome = function() {
+        console.log( $location.path() );
+        return $location.path() === 'apps/Snake3210/';
+    };
     var snakecanvas = document.getElementById( "the-game" );
     var snakecontext = snakecanvas.getContext( "2d" );
     angular.element( '.submitScore' ).prop( 'disabled', true );

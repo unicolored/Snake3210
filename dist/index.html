@@ -50,30 +50,20 @@
         <div>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <span class="md-flex">Snake
-                        <sup>3210</sup>
-                    </span>
-                    <a ng-href="/apps/Snake3210/#/">
-                        <md-button class="md-raised">Jouer</md-button>
+                    <a href="/apps/Snake3210/#/" ng-show="toolbar.isHome()">
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/navigation/svg/production/ic_menu_24px.svg" style="width: 24px; height: 24px;"></md-icon>
                     </a>
+                    <a href="/apps/Snake3210/#/" ng-hide="toolbar.isHome()">
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/navigation/svg/production/ic_arrow_back_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+                    </a>
+                    <span flex>Snake
+                      <sup>3210</sup>
+                    </span>
                     <a ng-href="/apps/Snake3210/#/classement">
-                        <md-button class="md-raised">Classement</md-button>
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/action/svg/production/ic_view_list_24px.svg" style="width: 24px; height: 24px;"></md-icon>
                     </a>
                     <a ng-href="/apps/Snake3210/#/aide">
-                        <md-button class="md-raised">Aide</md-button>
-                    </a>
-                    <a href="/#/" ng-show="toolbar.isHome()">
-                      <md-icon icon="/img/material-design-icons/navigation/svg/production/ic_menu_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-                    </a>
-                    <a href="/#/" ng-show="!toolbar.isHome()">
-                      <md-icon icon="/img/material-design-icons/navigation/svg/production/ic_arrow_back_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-                    </a>
-                    <span flex>unicolored</span>
-                    <a href="/#/" ng-show="toolbar.isHome()">
-                      <md-icon icon="/img/material-design-icons/content/svg/production/ic_filter_list_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-                    </a>
-                    <a href="/#/" ng-show="toolbar.isArticle()">
-                      <md-icon icon="/img/material-design-icons/social/svg/production/ic_share_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+                      <md-icon icon="/apps/Snake3210/img/material-design-icons/action/svg/production/ic_info_24px.svg" style="width: 24px; height: 24px;"></md-icon>
                     </a>
                 </div>
                 <md-progress-linear class="loadingspinner" md-mode="indeterminate" value="" ng-show="loading"></md-progress-linear>

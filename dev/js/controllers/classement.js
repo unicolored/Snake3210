@@ -59,9 +59,13 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
             vitesseMoyenne = Math.round( vitesseMoyenne * 100 ) / 10;
             var newScoreRow = angular.element( "<md-item-content/>" );
             //newScoreRow.append( angular.element( '<div class="md-tile-left"/>' ).append( angular.element( "<em/>" ).html( '<h5>' + scoreSnapshot.val().score + '</h5>' ) ) );
-            newScoreRow.append( $( '<div class="md-tile-right"/>' ).append( $( "<em/>" ).html( '<h1>' + scoreSnapshot.val().score + '</h1>' ) ).append( $( '<h3/>' ).text( scoreSnapshot.val().name ) ).append( scoreSnapshot.val().distance + " m | Vitesse moy. : " + vitesseMoyenne + " px/s" ) );
-            newScoreRow.append( '<md-divider></md-divider>' );
-            $( "<md-item/>" ).append( newScoreRow );
+            var dataScore = scoreSnapshot.val().score;
+            var dataDistance = scoreSnapshot.val().distance;
+            var dataLigne = angular.element( '<h2 />' ).html( '<em>' + dataScore + '</em> ' ).append( $( '<small/>' ).text( scoreSnapshot.val().name ) );
+            var dataMeta = angular.element( '<h5 style="text-align:right; padding:0 1em;" />' ).html( dataDistance + " m | Vitesse moy. : " + vitesseMoyenne + " px/s" );
+            newScoreRow.append( $( '<div class="md-tile-right" flex layout="row" layout-align="center end" />' ).append( angular.element( '<div flex />' ).html( dataMeta ) ).append( angular.element( '<div flex />' ).html( dataLigne ) ) );
+            var dataItem = angular.element( '<md-item />' ).append( newScoreRow );
+            angular.element( '<div class="md-padding" flex />' ).append( dataItem );
             // Store a reference to the table row so we can get it again later.
             htmlForPath[ scoreSnapshot.key() ] = newScoreRow;
             // Insert the new score in the appropriate place in the table.

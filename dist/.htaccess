@@ -10,7 +10,7 @@ RewriteRule .* %1\.webp [L,T=image/webp]
 <IfModule mod_rewrite.c>
 #RewriteRule ^css/(.+) wp-content/themes/rock-unicolored/$1 [L]
 #RewriteRule ^js/(.+) wp-content/themes/rock-unicolored/js/$1 [L]
-#RewriteRule ^img/(.+) wp-content/themes/rock-unicolored/img/$1 [L]
+#RewriteRule ^img/(.+) img/$1 [L]
 </IfModule>
 
 # BEGIN
