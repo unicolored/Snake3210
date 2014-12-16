@@ -27425,7 +27425,6 @@ var Snake3210 = angular.module( 'Snake3210', [ 'ngMaterial', 'ngRoute', 'ngSanit
 Snake3210.config( ['$routeProvider', function( $routeProvider ) {
     'use strict';
     $routeProvider.when( '/', {
-        //template: 'yo',
         templateUrl: './views/play.html',
         controller: 'PlayCtrl'
     } ).when( '/classement', {
@@ -27487,7 +27486,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
     // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
     var htmlForPath = {};
     // Create a view to only receive callbacks for the last LEADERBOARD_SIZE scores
-    var scoreListView = scoreListRef.limit( LEADERBOARD_SIZE );
+    var scoreListView = scoreListRef.limitToFirst( LEADERBOARD_SIZE );
     // Add a callback to handle when a new score is added.
     scoreListView.on( 'child_added', function( newScoreSnapshot, prevScoreName ) {
         handleScoreAdded( newScoreSnapshot, prevScoreName );
@@ -27516,7 +27515,7 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
             newScoreRow.append( '<md-divider></md-divider>' );
             $( "<md-item/>" ).append( newScoreRow );
             // Store a reference to the table row so we can get it again later.
-            htmlForPath[ scoreSnapshot.name() ] = newScoreRow;
+            htmlForPath[ scoreSnapshot.key() ] = newScoreRow;
             // Insert the new score in the appropriate place in the table.
             if ( prevScoreName === null ) {
                 angular.element( "#leaderboardTable" ).append( newScoreRow );
@@ -27527,9 +27526,9 @@ userScoreRef.set({ distance: 'Fred', last: 'Flintstone' }, onComplete);
         }
         // Helper function to handle a score object being removed; just removes the corresponding table row.
     function handleScoreRemoved( scoreSnapshot ) {
-        var removedScoreRow = htmlForPath[ scoreSnapshot.name() ];
+        var removedScoreRow = htmlForPath[ scoreSnapshot.key() ];
         removedScoreRow.remove();
-        delete htmlForPath[ scoreSnapshot.name() ];
+        delete htmlForPath[ scoreSnapshot.key() ];
     }
 } ] );
  
@@ -27773,7 +27772,7 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
         }, 1000 );
     }
     requestAnimationFrame( snakeloop );
-    snakecanvas.click( function() {
+    angular.element( '#the-game' ).on( 'click', function() {
         snakegame.start();
     } );
     /*
@@ -27802,7 +27801,7 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
     // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
     var htmlForPath = {};
     // Create a view to only receive callbacks for the last LEADERBOARD_SIZE scores
-    var scoreListView = scoreListRef.limit( LEADERBOARD_SIZE );
+    var scoreListView = scoreListRef.limitToFirst( LEADERBOARD_SIZE );
     // Add a callback to handle when a new score is added.
     scoreListView.on( 'child_added', function( newScoreSnapshot, prevScoreName ) {
         handleScoreAdded( newScoreSnapshot, prevScoreName );
@@ -27831,7 +27830,7 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
             newScoreRow.append( angular.element( "<td/>" ).text( vitesseMoyenne + " px/s" ) );
             newScoreRow.append( angular.element( "<td/>" ).html( '<h4>' + scoreSnapshot.val().score + '</h4>' ) );
             // Store a reference to the table row so we can get it again later.
-            htmlForPath[ scoreSnapshot.name() ] = newScoreRow;
+            htmlForPath[ scoreSnapshot.key() ] = newScoreRow;
             // Insert the new score in the appropriate place in the table.
             if ( prevScoreName === null ) {
                 angular.element( "#leaderboardTable" ).append( newScoreRow );
@@ -27842,9 +27841,9 @@ Snake3210.controller( 'PlayCtrl', [ '$scope', function( $scope ) {
         }
         // Helper function to handle a score object being removed; just removes the corresponding table row.
     function handleScoreRemoved( scoreSnapshot ) {
-        var removedScoreRow = htmlForPath[ scoreSnapshot.name() ];
+        var removedScoreRow = htmlForPath[ scoreSnapshot.key() ];
         removedScoreRow.remove();
-        delete htmlForPath[ scoreSnapshot.name() ];
+        delete htmlForPath[ scoreSnapshot.key() ];
     }
 
     function updatetheScore() {

@@ -501,7 +501,12 @@ module.exports = function( grunt ) {
                 livereload: 35729,
                 base: '',
                 key: grunt.file.read( 'ssl/monserveur.key' ).toString(),
-                cert: grunt.file.read( 'ssl/certificate-96884.crt' ).toString()
+                cert: grunt.file.read( 'ssl/certificate-96884.crt' ).toString(),
+                middleware: [
+                function myMiddleware( req, res, next ) {
+                        //res.end('Hello, world!');
+                }
+                ],
             },
             livereload: {
                 options: {
@@ -512,20 +517,7 @@ module.exports = function( grunt ) {
                     key: grunt.file.read( 'ssl/monserveur.key' ),
                     cert: grunt.file.read( 'ssl/certificate-96884.crt' )
                 }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    middleware: function( connect ) {
-                        return [
-          connect.static( '.tmp' ),
-          connect.static( 'test' ),
-          connect().use( '/bower_components', connect.static( './bower_components' ) ),
-          connect.static( '<%= gh.distPath %>' )
-          ];
-                    }
-                }
-            },
+            }
         },
         phantom: {
             options: {

@@ -62,6 +62,7 @@
     "imagemin-jpegoptim": "^4.0.0",
     "imagemin-mozjpeg": "^4.0.0",
     "jshint-stylish": "^1.0.0",
+    "livereload": "^0.3.4",
     "load-grunt-tasks": "^1.0.0",
     "mozjpeg": "^2.0.4"
   },
